@@ -64,7 +64,7 @@ libtransceiver_la_SOURCES = \
 	radioInterfaceResamp.cpp \
 	radioInterfaceDiversity.cpp
 
-bin_PROGRAMS = osmo-trx
+bin_PROGRAMS = osmo-trx osmo-trx-dec
 
 noinst_HEADERS = \
 	Complex.h \
@@ -84,6 +84,13 @@ noinst_HEADERS = \
 
 osmo_trx_SOURCES = osmo-trx.cpp
 osmo_trx_LDADD = \
+	libtransceiver.la \
+	$(ARCH_LA) \
+	$(GSM_LA) \
+	$(COMMON_LA) $(SQLITE_LA)
+
+osmo_trx_dec_SOURCES = osmo-trx-dec.cpp
+osmo_trx_dec_LDADD = \
 	libtransceiver.la \
 	$(ARCH_LA) \
 	$(GSM_LA) \
